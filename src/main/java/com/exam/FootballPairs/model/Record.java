@@ -1,4 +1,4 @@
-package com.exam.FootballPairs.Model;
+package com.exam.FootballPairs.model;
 
 public class Record {
     private long id;

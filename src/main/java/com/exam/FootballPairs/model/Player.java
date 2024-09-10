@@ -1,4 +1,4 @@
-package com.exam.FootballPairs.Model;
+package com.exam.FootballPairs.model;
 
 public class Player {
     private long id;
