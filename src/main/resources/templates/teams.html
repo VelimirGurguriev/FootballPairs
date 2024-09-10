@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Teams</title>
+</head>
+<body>
+<h1>Teams:</h1>
+<ul>
+    <li th:each="teams: ${teams}">
+        <span th:text="${teams.id}">ID</span>
+        <span th:text="${teams.name}">Name</span>
+        <span th:text="${teams.managerName}">ManagerName</span>
+        <span th:text="${teams.group}">Group</span>
+    </li>
+</ul>
+</body>
+</html>
