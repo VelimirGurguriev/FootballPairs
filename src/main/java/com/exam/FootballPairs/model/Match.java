@@ -4,15 +4,15 @@ import java.time.LocalDate;
 
 public class Match {
     private long id;
-    private int aTeamId;
-    private int bTeamId;
+    private long aTeamId;
+    private long bTeamId;
     private LocalDate date;
     private String score;
 
     public Match() {
     }
 
-    public Match(long id, int aTeamId, int bTeamId, LocalDate date, String score) {
+    public Match(long id, long aTeamId, long bTeamId, LocalDate date, String score) {
         this.id = id;
         this.aTeamId = aTeamId;
         this.bTeamId = bTeamId;
@@ -28,19 +28,19 @@ public class Match {
         this.id = id;
     }
 
-    public int getaTeamId() {
+    public long getaTeamId() {
         return aTeamId;
     }
 
-    public void setaTeamId(int aTeamId) {
+    public void setaTeamId(long aTeamId) {
         this.aTeamId = aTeamId;
     }
 
-    public int getbTeamId() {
+    public long getbTeamId() {
         return bTeamId;
     }
 
-    public void setbTeamId(int bTeamId) {
+    public void setbTeamId(long bTeamId) {
         this.bTeamId = bTeamId;
     }
 

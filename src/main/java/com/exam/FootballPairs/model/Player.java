@@ -5,12 +5,12 @@ public class Player {
     private int teamNumber;
     private String position;
     private String fullName;
-    private int teamId;
+    private long teamId;
 
     public Player() {
     }
 
-    public Player(long id, int teamNumber, String position, String fullName, int teamId) {
+    public Player(long id, int teamNumber, String position, String fullName, long teamId) {
         this.id = id;
         this.teamNumber = teamNumber;
         this.position = position;
@@ -50,11 +50,11 @@ public class Player {
         this.fullName = fullName;
     }
 
-    public int getTeamId() {
+    public long getTeamId() {
         return teamId;
     }
 
-    public void setTeamId(int teamId) {
+    public void setTeamId(long teamId) {
         this.teamId = teamId;
     }
 }

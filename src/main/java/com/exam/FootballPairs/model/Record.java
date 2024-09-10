@@ -2,15 +2,15 @@ package com.exam.FootballPairs.model;
 
 public class Record {
     private long id;
-    private int playerId;
-    private int matchId;
+    private long playerId;
+    private long matchId;
     private int fromMinutes;
     private int toMinutes;
 
     public Record() {
     }
 
-    public Record(long id, int playerId, int matchId, int fromMinutes, int toMinutes) {
+    public Record(long id, long playerId, long matchId, int fromMinutes, int toMinutes) {
         this.id = id;
         this.playerId = playerId;
         this.matchId = matchId;
@@ -26,19 +26,19 @@ public class Record {
         this.id = id;
     }
 
-    public int getPlayerId() {
+    public long getPlayerId() {
         return playerId;
     }
 
-    public void setPlayerId(int playerId) {
+    public void setPlayerId(long playerId) {
         this.playerId = playerId;
     }
 
-    public int getMatchId() {
+    public long getMatchId() {
         return matchId;
     }
 
-    public void setMatchId(int matchId) {
+    public void setMatchId(long matchId) {
         this.matchId = matchId;
     }
 
