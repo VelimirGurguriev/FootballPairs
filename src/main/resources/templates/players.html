@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Players</title>
+</head>
+<body>
+<h1>Players:</h1>
+<ul>
+    <li th:each="players: ${players}">
+        <span th:text="${players.id}">ID</span>
+        <span th:text="${players.teamNumber}">TeamNumber</span>
+        <span th:text="${players.position}">Position</span>
+        <span th:text="${players.fullName}">FullName</span>
+        <span th:text="${players.teamId}">TeamId</span>
+    </li>
+</ul>
+</body>
+</html>

@@ -25,6 +25,8 @@ public class CsvService {
     public List<Player> readPlayers() {
         List<Player> playersList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(PLAYERS_FILE))) {
+            // TEMP skip first line to validate that its working correctly
+            reader.readLine();
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
                 // TO DO - add field validations
@@ -78,6 +80,8 @@ public class CsvService {
     public List<Match> readMatches() {
         List<Match> matchesList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(MATCHES_FILE))) {
+            // TEMP skip first line to validate that its working correctly
+            reader.readLine();
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
                 // TO DO - add field validations
@@ -104,6 +108,8 @@ public class CsvService {
     public List<Record> readRecords() {
         List<Record> recordsList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(RECORDS_FILE))) {
+            // TEMP skip first line to validate that its working correctly
+            reader.readLine();
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
                 // TO DO - add field validations

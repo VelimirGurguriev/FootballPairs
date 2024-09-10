@@ -14,6 +14,12 @@ public class FootballController {
     @Autowired
     private FootballService footballService;
 
+    @GetMapping("/players")
+    public String viewPlayers(Model model) {
+        model.addAttribute("players", footballService.getPlayers());
+        return "players";
+    }
+
     @GetMapping("/teams")
     public String viewTeams(Model model) {
         model.addAttribute("teams", footballService.getTeams());
