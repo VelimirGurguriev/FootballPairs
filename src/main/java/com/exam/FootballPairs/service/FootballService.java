@@ -5,9 +5,11 @@ import com.exam.FootballPairs.model.Player;
 import com.exam.FootballPairs.model.Record;
 import com.exam.FootballPairs.model.Team;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class FootballService {
 
     @Autowired
