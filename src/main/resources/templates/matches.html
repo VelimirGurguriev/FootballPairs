@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Matches</title>
+</head>
+<body>
+<h1>Matches:</h1>
+<ul>
+    <li th:each="matches: ${matches}">
+        <span th:text="${matches.id}">ID</span>
+        <span th:text="${matches.aTeamId}">ATeamId</span>
+        <span th:text="${matches.bTeamId}">BTeamId</span>
+        <span th:text="${matches.date}">Date</span>
+        <span th:text="${matches.score}">Score</span>
+    </li>
+</ul>
+</body>
+</html>

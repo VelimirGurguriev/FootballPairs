@@ -25,4 +25,10 @@ public class FootballController {
         model.addAttribute("teams", footballService.getTeams());
         return "teams";
     }
+
+    @GetMapping("/matches")
+    public String viewMatches(Model model) {
+        model.addAttribute("matches", footballService.getMatches());
+        return "matches";
+    }
 }
