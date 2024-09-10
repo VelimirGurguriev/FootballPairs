@@ -4,6 +4,7 @@ import com.exam.FootballPairs.model.Match;
 import com.exam.FootballPairs.model.Player;
 import com.exam.FootballPairs.model.Record;
 import com.exam.FootballPairs.model.Team;
+import com.exam.FootballPairs.utils.DateFormatConverter;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -11,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,7 +93,9 @@ public class CsvService {
                 Long matchId = Long.valueOf(fields[0]);
                 Long aTeamID = Long.valueOf(fields[1]);
                 Long bTeamID = Long.valueOf(fields[2]);
-                LocalDate date = LocalDate.parse(fields[3]);
+                //LocalDate date = LocalDate.parse(fields[3]);
+                String dateToString = fields[3];
+                LocalDate date = DateFormatConverter.convertDateFormat(dateToString);
                 String score = fields[4];
                 // Adding a new class object to the ArrayList
                 matchesList.add(new Match(matchId, aTeamID, bTeamID, date, score));
