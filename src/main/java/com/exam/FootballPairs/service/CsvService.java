@@ -17,10 +17,10 @@ import java.util.List;
 @Service
 public class CsvService {
     // Initialising CSV file names as constants for the CSV service
-    private static final String PLAYERS_FILE = "/src/main/resources/players.csv";
-    private static final String TEAMS_FILE = "/src/main/resources/teams.csv";
-    private static final String MATCHES_FILE = "/src/main/resources/matches.csv";
-    private static final String RECORDS_FILE = "/src/main/resources/records.csv";
+    private static final String PLAYERS_FILE = "./src/main/resources/players.csv";
+    private static final String TEAMS_FILE = "./src/main/resources/teams.csv";
+    private static final String MATCHES_FILE = "./src/main/resources/matches.csv";
+    private static final String RECORDS_FILE = "./src/main/resources/records.csv";
 
     public List<Player> readPlayers() {
         List<Player> playersList = new ArrayList<>();
@@ -51,6 +51,8 @@ public class CsvService {
     public List<Team> readTeams() {
         List<Team> teamsList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(TEAMS_FILE))) {
+            // TEMP skip first line to validate that its working correctly
+            reader.readLine();
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
                 // TO DO - add field validations
