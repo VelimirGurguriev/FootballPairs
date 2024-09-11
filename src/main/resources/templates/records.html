@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Records</title>
+</head>
+<body>
+<h1>Records:</h1>
+<ul>
+    <li th:each="records: ${records}">
+        <span th:text="${records.id}">ID</span>
+        <span th:text="${records.playerId}">PlayerId</span>
+        <span th:text="${records.matchId}">MatchId</span>
+        <span th:text="${records.fromMinutes}">FromMinutes</span>
+        <span th:text="${records.toMinutes}">ToMinutes</span>
+    </li>
+</ul>
+</body>
+</html>

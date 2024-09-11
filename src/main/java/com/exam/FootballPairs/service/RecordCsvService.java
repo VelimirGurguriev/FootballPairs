@@ -52,4 +52,36 @@ public class RecordCsvService {
 
         return recordsList;
     }
+
+    public void loadRecordsToDB() {
+        List<Record> recordsList = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(RECORDS_FILE))) {
+            // TEMP skip first line to validate that its working correctly
+            reader.readLine();
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                // TO DO - add field validations
+                // Splitting the text on the current line by a comma as a separator
+                String[] fields = currentLine.split(",");
+                // Taking the values of each field and assigning to a variable for the constructor
+                Long recordId = Long.valueOf(fields[0]);
+                Long playerID = Long.valueOf(fields[1]);
+                Long matchID = Long.valueOf(fields[2]);
+                int fromMinutes = Integer.parseInt(fields[3]);
+                Integer toMinutes;
+                if (fields[4].equalsIgnoreCase("NULL") || fields[4].isEmpty()) {
+                    toMinutes = null;
+                } else {
+                    toMinutes = Integer.parseInt(fields[4]);
+                }
+                // Adding a new class object to the ArrayList
+                recordsList.add(new Record(recordId, playerID, matchID, fromMinutes, toMinutes));
+            }
+            recordRepository.saveAll(recordsList);
+        } catch (FileNotFoundException exc) {
+            throw new RuntimeException(exc);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
