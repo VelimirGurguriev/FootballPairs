@@ -27,8 +27,8 @@ public class AppConfig {
     @Bean
     public CommandLineRunner loadToDB() {
         return args -> {
-            playerCsvService.loadPlayersToDB();
             teamCsvService.loadTeamsToDB();
+            playerCsvService.loadPlayersToDB();
             matchCsvService.loadMatchesToDB();
             recordCsvService.loadRecordsToDB();
         };

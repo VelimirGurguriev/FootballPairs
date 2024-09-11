@@ -18,13 +18,25 @@ public class Player {
     @Column(nullable = false)
     private String fullName;
 
-    @Column(nullable = false)
-    private long teamId;
+//    @Column(nullable = false)
+//    private long teamId;
+
+    @ManyToOne
+    @JoinColumn(name = "teamId", nullable = false)
+    private Team teamId;
 
     public Player() {
     }
 
-    public Player(long id, int teamNumber, String position, String fullName, long teamId) {
+//    public Player(long id, int teamNumber, String position, String fullName, long teamId) {
+//        this.id = id;
+//        this.teamNumber = teamNumber;
+//        this.position = position;
+//        this.fullName = fullName;
+//        this.teamId = teamId;
+//    }
+
+    public Player(long id, int teamNumber, String position, String fullName, Team teamId) {
         this.id = id;
         this.teamNumber = teamNumber;
         this.position = position;
@@ -64,11 +76,19 @@ public class Player {
         this.fullName = fullName;
     }
 
-    public long getTeamId() {
-        return teamId;
-    }
+//    public long getTeamId() {
+//        return teamId;
+//    }
+//
+//    public void setTeamId(long teamId) {
+//        this.teamId = teamId;
+//    }
 
-    public void setTeamId(long teamId) {
-        this.teamId = teamId;
+    public long getTeamId() {
+        if(teamId != null) {
+            return teamId.getId();
+        } else {
+            return 0;
+        }
     }
 }

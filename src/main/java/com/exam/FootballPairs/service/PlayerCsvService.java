@@ -1,7 +1,9 @@
 package com.exam.FootballPairs.service;
 
 import com.exam.FootballPairs.model.Player;
+import com.exam.FootballPairs.model.Team;
 import com.exam.FootballPairs.repository.PlayerRepository;
+import com.exam.FootballPairs.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,9 @@ public class PlayerCsvService {
 
     @Autowired
     private PlayerRepository playerRepository;
+
+    @Autowired
+    private TeamRepository teamRepository;
 
     private static final String PLAYERS_FILE = "./src/main/resources/players.csv";
 
@@ -36,8 +41,13 @@ public class PlayerCsvService {
                 String position = fields[2];
                 String fullName = fields[3];
                 Long teamId = Long.valueOf(fields[4]);
+                Team team = teamRepository.findById(teamId).orElse(null);
                 // Adding a new class object to the ArrayList
-                playersList.add(new Player(playerId, teamNumber, position, fullName, teamId));
+                if (team != null) {
+                    playersList.add(new Player(playerId, teamNumber, position, fullName, team));
+                } else {
+                    System.err.println("Team with ID " + teamId + " not found");
+                }
             }
         } catch (FileNotFoundException exc) {
             throw new RuntimeException(exc);
@@ -65,7 +75,13 @@ public class PlayerCsvService {
                 String fullName = fields[3];
                 Long teamId = Long.valueOf(fields[4]);
                 // Adding a new class object to the ArrayList
-                playersList.add(new Player(playerId, teamNumber, position, fullName, teamId));
+                Team team = teamRepository.findById(teamId).orElse(null);
+                // Adding a new class object to the ArrayList
+                if (team != null) {
+                    playersList.add(new Player(playerId, teamNumber, position, fullName, team));
+                } else {
+                    System.err.println("Team with ID " + teamId + " not found");
+                }
             }
             playerRepository.saveAll(playersList);
         } catch (FileNotFoundException exc) {

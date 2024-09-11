@@ -1,7 +1,9 @@
 package com.exam.FootballPairs.service;
 
 import com.exam.FootballPairs.model.Match;
+import com.exam.FootballPairs.model.Team;
 import com.exam.FootballPairs.repository.MatchRepository;
+import com.exam.FootballPairs.repository.TeamRepository;
 import com.exam.FootballPairs.utils.DateFormatConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,9 @@ public class MatchCsvService {
 
     @Autowired
     private MatchRepository matchRepository;
+
+    @Autowired
+    private TeamRepository teamRepository;
 
     private static final String MATCHES_FILE = "./src/main/resources/matches.csv";
 
@@ -41,7 +46,9 @@ public class MatchCsvService {
                 LocalDate date = DateFormatConverter.convertDateFormat(dateToString);
                 String score = fields[4];
                 // Adding a new class object to the ArrayList
-                matchesList.add(new Match(matchId, aTeamID, bTeamID, date, score));
+                Team aTeam = teamRepository.findById(aTeamID).orElse(null);
+                Team bTeam = teamRepository.findById(bTeamID).orElse(null);
+                matchesList.add(new Match(matchId, aTeam, bTeam, date, score));
             }
         } catch (FileNotFoundException exc) {
             throw new RuntimeException(exc);
@@ -71,7 +78,14 @@ public class MatchCsvService {
                 LocalDate date = DateFormatConverter.convertDateFormat(dateToString);
                 String score = fields[4];
                 // Adding a new class object to the ArrayList
-                matchesList.add(new Match(matchId, aTeamID, bTeamID, date, score));
+                Team aTeam = teamRepository.findById(aTeamID).orElse(null);
+                Team bTeam = teamRepository.findById(bTeamID).orElse(null);
+                if(aTeam != null && bTeam != null) {
+                    matchesList.add(new Match(matchId, aTeam, bTeam, date, score));
+                } else {
+                    System.err.println("Teams with ID " + aTeam + " and " + bTeam + " not found.");
+                }
+
             }
             matchRepository.saveAll(matchesList);
         } catch (FileNotFoundException exc) {

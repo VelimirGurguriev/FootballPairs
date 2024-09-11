@@ -2,6 +2,8 @@ package com.exam.FootballPairs.model;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "teams")
 public class Team {
@@ -17,6 +19,9 @@ public class Team {
 
     @Column(nullable = false)
     private String teamGroup;
+
+    @OneToMany(mappedBy = "teamId")
+    private Set<Player> playerSet;
 
     public Team() {
     }
@@ -58,5 +63,13 @@ public class Team {
 
     public void setTeamGroup(String teamGroup) {
         this.teamGroup = teamGroup;
+    }
+
+    public Set<Player> getPlayerSet() {
+        return playerSet;
+    }
+
+    public void setPlayerSet(Set<Player> playerSet) {
+        this.playerSet = playerSet;
     }
 }

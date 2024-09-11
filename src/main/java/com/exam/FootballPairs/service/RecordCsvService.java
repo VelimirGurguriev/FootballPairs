@@ -1,6 +1,10 @@
 package com.exam.FootballPairs.service;
 
+import com.exam.FootballPairs.model.Match;
+import com.exam.FootballPairs.model.Player;
 import com.exam.FootballPairs.model.Record;
+import com.exam.FootballPairs.repository.MatchRepository;
+import com.exam.FootballPairs.repository.PlayerRepository;
 import com.exam.FootballPairs.repository.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +21,12 @@ public class RecordCsvService {
 
     @Autowired
     private RecordRepository recordRepository;
+
+    @Autowired
+    private PlayerRepository playerRepository;
+
+    @Autowired
+    private MatchRepository matchRepository;
 
     private static final String RECORDS_FILE = "./src/main/resources/records.csv";
 
@@ -42,7 +52,14 @@ public class RecordCsvService {
                     toMinutes = Integer.parseInt(fields[4]);
                 }
                 // Adding a new class object to the ArrayList
-                recordsList.add(new Record(recordId, playerID, matchID, fromMinutes, toMinutes));
+                Player player = playerRepository.findById(playerID).orElse(null);
+                Match match = matchRepository.findById(matchID).orElse(null);
+                if (player != null && match != null) {
+                    recordsList.add(new Record(recordId, player, match, fromMinutes, toMinutes));
+                } else {
+                    System.err.println("Player with ID " + playerID + " not found");
+                    System.err.println("Match with ID " + matchID + " not found");
+                }
             }
         } catch (FileNotFoundException exc) {
             throw new RuntimeException(exc);
@@ -75,7 +92,14 @@ public class RecordCsvService {
                     toMinutes = Integer.parseInt(fields[4]);
                 }
                 // Adding a new class object to the ArrayList
-                recordsList.add(new Record(recordId, playerID, matchID, fromMinutes, toMinutes));
+                Player player = playerRepository.findById(playerID).orElse(null);
+                Match match = matchRepository.findById(matchID).orElse(null);
+                if (player != null && match != null) {
+                    recordsList.add(new Record(recordId, player, match, fromMinutes, toMinutes));
+                } else {
+                    System.err.println("Player with ID " + playerID + " not found");
+                    System.err.println("Match with ID " + matchID + " not found");
+                }
             }
             recordRepository.saveAll(recordsList);
         } catch (FileNotFoundException exc) {
