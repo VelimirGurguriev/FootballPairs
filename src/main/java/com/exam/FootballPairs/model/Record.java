@@ -1,16 +1,29 @@
 package com.exam.FootballPairs.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "records")
 public class Record {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(nullable = false)
     private long playerId;
+
+    @Column(nullable = false)
     private long matchId;
+
+    @Column(nullable = false)
     private int fromMinutes;
-    private int toMinutes;
+
+    private Integer toMinutes;
 
     public Record() {
     }
 
-    public Record(long id, long playerId, long matchId, int fromMinutes, int toMinutes) {
+    public Record(long id, long playerId, long matchId, int fromMinutes, Integer toMinutes) {
         this.id = id;
         this.playerId = playerId;
         this.matchId = matchId;
@@ -50,11 +63,11 @@ public class Record {
         this.fromMinutes = fromMinutes;
     }
 
-    public int getToMinutes() {
+    public Integer getToMinutes() {
         return toMinutes;
     }
 
-    public void setToMinutes(int toMinutes) {
+    public void setToMinutes(Integer toMinutes) {
         this.toMinutes = toMinutes;
     }
 }

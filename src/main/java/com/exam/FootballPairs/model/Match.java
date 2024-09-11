@@ -1,12 +1,26 @@
 package com.exam.FootballPairs.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "matches")
 public class Match {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(nullable = false)
     private long aTeamId;
+
+    @Column(nullable = false)
     private long bTeamId;
+
+    @Column(nullable = false)
     private LocalDate date;
+
+    @Column(nullable = false)
     private String score;
 
     public Match() {

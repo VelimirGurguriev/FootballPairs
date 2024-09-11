@@ -1,19 +1,31 @@
 package com.exam.FootballPairs.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "teams")
 public class Team {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String managerName;
-    private String group;
+
+    @Column(nullable = false)
+    private String teamGroup;
 
     public Team() {
     }
 
-    public Team(long id, String name, String managerName, String group) {
+    public Team(long id, String name, String managerName, String teamGroup) {
         this.id = id;
         this.name = name;
         this.managerName = managerName;
-        this.group = group;
+        this.teamGroup = teamGroup;
     }
 
     public long getId() {
@@ -40,11 +52,11 @@ public class Team {
         this.managerName = managerName;
     }
 
-    public String getGroup() {
-        return group;
+    public String getTeamGroup() {
+        return teamGroup;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setTeamGroup(String teamGroup) {
+        this.teamGroup = teamGroup;
     }
 }

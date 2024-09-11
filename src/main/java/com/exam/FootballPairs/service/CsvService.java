@@ -12,7 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,9 +65,9 @@ public class CsvService {
                 Long teamId = Long.valueOf(fields[0]);
                 String teamName = fields[1];
                 String managerName = fields[2];
-                String group = fields[3];
+                String teamGroup = fields[3];
                 // Adding a new class object to the ArrayList
-                teamsList.add(new Team(teamId, teamName, managerName, group));
+                teamsList.add(new Team(teamId, teamName, managerName, teamGroup));
             }
         } catch (FileNotFoundException exc) {
             throw new RuntimeException(exc);
@@ -124,7 +123,7 @@ public class CsvService {
                 Long playerID = Long.valueOf(fields[1]);
                 Long matchID = Long.valueOf(fields[2]);
                 int fromMinutes = Integer.parseInt(fields[3]);
-                int toMinutes = Integer.parseInt(fields[4]);
+                Integer toMinutes = Integer.parseInt(fields[4]);
                 // Adding a new class object to the ArrayList
                 recordsList.add(new Record(recordId, playerID, matchID, fromMinutes, toMinutes));
             }

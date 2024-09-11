@@ -1,10 +1,24 @@
 package com.exam.FootballPairs.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "players")
 public class Player {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(nullable = false)
     private int teamNumber;
+
+    @Column(nullable = false)
     private String position;
+
+    @Column(nullable = false)
     private String fullName;
+
+    @Column(nullable = false)
     private long teamId;
 
     public Player() {
