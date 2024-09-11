@@ -23,7 +23,7 @@ public class Player {
 
     @ManyToOne
     @JoinColumn(name = "teamId", nullable = false)
-    private Team teamId;
+    private Team team;
 
     public Player() {
     }
@@ -41,7 +41,7 @@ public class Player {
         this.teamNumber = teamNumber;
         this.position = position;
         this.fullName = fullName;
-        this.teamId = teamId;
+        this.team = teamId;
     }
 
     public long getId() {
@@ -85,8 +85,8 @@ public class Player {
 //    }
 
     public long getTeamId() {
-        if(teamId != null) {
-            return teamId.getId();
+        if(team != null) {
+            return team.getId();
         } else {
             return 0;
         }

@@ -20,7 +20,7 @@ public class Team {
     @Column(nullable = false)
     private String teamGroup;
 
-    @OneToMany(mappedBy = "teamId")
+    @OneToMany(mappedBy = "team")
     private Set<Player> playerSet;
 
     public Team() {

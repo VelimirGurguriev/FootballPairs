@@ -14,14 +14,14 @@ public class Record {
 
     @ManyToOne
     @JoinColumn(name = "playerId", nullable = false)
-    private Player playerId;
+    private Player player;
 
 //    @Column(nullable = false)
 //    private long matchId;
 
     @ManyToOne
     @JoinColumn(name = "matchId", nullable = false)
-    private Match matchId;
+    private Match match;
 
     @Column(nullable = false)
     private int fromMinutes;
@@ -51,8 +51,8 @@ public class Record {
 
     public Record(long id, Player playerId, Match matchId, int fromMinutes, Integer toMinutes) {
         this.id = id;
-        this.playerId = playerId;
-        this.matchId = matchId;
+        this.player = playerId;
+        this.match = matchId;
         this.fromMinutes = fromMinutes;
         this.toMinutes = toMinutes;
     }
@@ -75,8 +75,8 @@ public class Record {
 
 
     public long getPlayerId() {
-        if(playerId != null) {
-            return playerId.getId();
+        if(player != null) {
+            return player.getId();
         } else {
             return 0;
         }
@@ -91,8 +91,8 @@ public class Record {
 //    }
 
     public long getMatchId() {
-        if(matchId != null) {
-            return matchId.getId();
+        if(match != null) {
+            return match.getId();
         } else {
             return 0;
         }

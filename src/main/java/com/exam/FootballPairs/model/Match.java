@@ -18,14 +18,14 @@ public class Match {
 
     @ManyToOne
     @JoinColumn(name = "aTeamId", nullable = false)
-    private Team aTeamId;
+    private Team aTeam;
 
 //    @Column(nullable = false)
 //    private long bTeamId;
 
     @ManyToOne
     @JoinColumn(name = "bTeamId", nullable = false)
-    private Team bTeamId;
+    private Team bTeam;
 
     @Column(nullable = false)
     private LocalDate date;
@@ -33,7 +33,7 @@ public class Match {
     @Column(nullable = false)
     private String score;
 
-    @OneToMany(mappedBy = "matchId")
+    @OneToMany(mappedBy = "match")
     private Set<Record> records;
 
     public Match() {
@@ -50,8 +50,8 @@ public class Match {
 
     public Match(long id, Team aTeamId, Team bTeamId, LocalDate date, String score) {
         this.id = id;
-        this.aTeamId = aTeamId;
-        this.bTeamId = bTeamId;
+        this.aTeam = aTeamId;
+        this.bTeam = bTeamId;
         this.date = date;
         this.score = score;
     }
@@ -81,16 +81,16 @@ public class Match {
 //    }
 
     public long getaTeamId() {
-        if(aTeamId != null) {
-            return aTeamId.getId();
+        if(aTeam != null) {
+            return aTeam.getId();
         } else {
             return 0;
         }
     }
 
     public long getbTeamId() {
-        if(bTeamId != null) {
-            return bTeamId.getId();
+        if(bTeam != null) {
+            return bTeam.getId();
         } else {
             return 0;
         }
@@ -110,5 +110,13 @@ public class Match {
 
     public void setScore(String score) {
         this.score = score;
+    }
+
+    public Set<Record> getRecords() {
+        return records;
+    }
+
+    public void setRecords(Set<Record> records) {
+        this.records = records;
     }
 }
