@@ -13,21 +13,35 @@ import java.util.List;
 public class FootballService {
 
     @Autowired
-    public CsvService csvService;
+    public PlayerCsvService playerCsvService;
+
+    @Autowired
+    public TeamCsvService teamCsvService;
+
+    @Autowired
+    public MatchCsvService matchCsvService;
+
+    @Autowired
+    public RecordCsvService recordCsvService;
 
     public List<Player> getPlayers() {
-        return csvService.readPlayers();
+        //return csvService.readPlayers();
+        return playerCsvService.readPlayers();
+    }
+
+    public void loadPlayersToDB() {
+        playerCsvService.loadPlayersToDB();
     }
 
     public List<Team> getTeams() {
-        return csvService.readTeams();
+        return teamCsvService.readTeams();
     }
 
     public List<Match> getMatches() {
-        return csvService.readMatches();
+        return matchCsvService.readMatches();
     }
 
     public List<Record> getRecords() {
-        return csvService.readRecords();
+        return recordCsvService.readRecords();
     }
 }
