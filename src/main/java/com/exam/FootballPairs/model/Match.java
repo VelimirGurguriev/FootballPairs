@@ -13,15 +13,9 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @Column(nullable = false)
-//    private long aTeamId;
-
     @ManyToOne
     @JoinColumn(name = "aTeamId", nullable = false)
     private Team aTeam;
-
-//    @Column(nullable = false)
-//    private long bTeamId;
 
     @ManyToOne
     @JoinColumn(name = "bTeamId", nullable = false)
@@ -39,14 +33,6 @@ public class Match {
     public Match() {
     }
 
-//    public Match(long id, long aTeamId, long bTeamId, LocalDate date, String score) {
-//        this.id = id;
-//        this.aTeamId = aTeamId;
-//        this.bTeamId = bTeamId;
-//        this.date = date;
-//        this.score = score;
-//    }
-
 
     public Match(long id, Team aTeamId, Team bTeamId, LocalDate date, String score) {
         this.id = id;
@@ -63,22 +49,6 @@ public class Match {
     public void setId(long id) {
         this.id = id;
     }
-
-//    public long getaTeamId() {
-//        return aTeamId;
-//    }
-//
-//    public void setaTeamId(long aTeamId) {
-//        this.aTeamId = aTeamId;
-//    }
-//
-//    public long getbTeamId() {
-//        return bTeamId;
-//    }
-//
-//    public void setbTeamId(long bTeamId) {
-//        this.bTeamId = bTeamId;
-//    }
 
     public long getaTeamId() {
         if(aTeam != null) {

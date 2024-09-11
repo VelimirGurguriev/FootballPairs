@@ -25,7 +25,6 @@ public class FootballService {
     public RecordCsvService recordCsvService;
 
     public List<Player> getPlayers() {
-        //return csvService.readPlayers();
         return playerCsvService.readPlayers();
     }
 

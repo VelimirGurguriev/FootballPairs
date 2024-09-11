@@ -9,15 +9,9 @@ public class Record {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @Column(nullable = false)
-//    private long playerId;
-
     @ManyToOne
     @JoinColumn(name = "playerId", nullable = false)
     private Player player;
-
-//    @Column(nullable = false)
-//    private long matchId;
 
     @ManyToOne
     @JoinColumn(name = "matchId", nullable = false)
@@ -30,24 +24,6 @@ public class Record {
 
     public Record() {
     }
-
-//    public Record(long id, long playerId, long matchId, int fromMinutes, Integer toMinutes) {
-//        this.id = id;
-//        this.playerId = playerId;
-//        this.matchId = matchId;
-//        this.fromMinutes = fromMinutes;
-//        this.toMinutes = toMinutes;
-//    }
-
-
-//    public Record(long id, Player playerId, long matchId, int fromMinutes, Integer toMinutes) {
-//        this.id = id;
-//        this.playerId = playerId;
-//        this.matchId = matchId;
-//        this.fromMinutes = fromMinutes;
-//        this.toMinutes = toMinutes;
-//    }
-
 
     public Record(long id, Player playerId, Match matchId, int fromMinutes, Integer toMinutes) {
         this.id = id;
@@ -65,15 +41,6 @@ public class Record {
         this.id = id;
     }
 
-//    public long getPlayerId() {
-//        return playerId;
-//    }
-//
-//    public void setPlayerId(long playerId) {
-//        this.playerId = playerId;
-//    }
-
-
     public long getPlayerId() {
         if(player != null) {
             return player.getId();
@@ -81,14 +48,6 @@ public class Record {
             return 0;
         }
     }
-
-//    public long getMatchId() {
-//        return matchId;
-//    }
-//
-//    public void setMatchId(long matchId) {
-//        this.matchId = matchId;
-//    }
 
     public long getMatchId() {
         if(match != null) {
